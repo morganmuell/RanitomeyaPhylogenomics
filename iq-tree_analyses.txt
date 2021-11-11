@@ -1,13 +1,46 @@
-## Maximum Likelihood Tree - Unpartitioned ##
+###########################################
+# Maximum Likelihood Tree - Unpartitioned #
+###########################################
 
+## Get the unpartitioned tree ##
+iqtree -s muscle-nexus-clean-70p_75p.phylip -m MFP -bb 10000 -nt 18
+
+# -s is the sequence file
+# -m is the nucleotide substitution model, "MFP" tells IQ-TREE to use ModelFinder, automatically selecting for the best nucleotide substitution model
+# -bb bootstraps
+# -nt number of threads, I was working with a max of 20 so I used 18
+
+## Calculate gcf and scf values ##
+#first calculate gene trees
+
+#organizing step - make a folder for the trees and copied all alignments retained from filtering steps into the folder (may not be necessary replication of files, just a safety move)
+mkdir muscle-nexus-iqtree-genetrees-70p_75p
+cp ../muscle-nexus-clean-70p_75p/* .
+
+#calculate maximum likelihood tree for all loci retained post-filtering
+for i in *.nexus;
+ do iqtree -s $i -bb 1000 -m MFP -nt AUTO --czb;
+done
+# same options as above for the most part
+# -bb reduced to 1000 to speed up analysis
+# -czb option stands for "collapse zero branch lengths" and reduces very short branches to polytomies, which functions to reduce gene tree bias
+
+
+#concatenate all treefiles into one file for downstream analyses
+cat *.treefile > gene_trees.newick
+
+#now calculate gcf and scf values for unpartitioned topology
+iqtree2 -t ML_unpartition.treefile --gcf gene_trees.newick -s muscle-nexus-clean-70p_75p.phylip --scf 100 -T 18
+#--gcf option inputs gene trees for gcf calculation
+#--scf 100 is suggested default value
+#in iqtree2 to specify number of nodes it's 18
 
 ######################################################
 ### Maximum Likelihood Tree - Partitioned by Locus ###
 ######################################################
 
 ## Get the partitioned tree ##
-iqtree -s muscle-nexus-clean-70p_75p.phylip -spp partition-70p_75p.nexus -m MFP 
--bb 10000 -nt 19
+iqtree -s muscle-nexus-clean-70p_75p.phylip -spp partition-70p_75p.nexus -m MFP -bb 10000 -nt 19
 
 # -s is concatenated alignment output from muscle
 #  -spp partition file has character set outputs from Muscle and just tells iqtree where the separations of each locus are in the concatenated alignment
