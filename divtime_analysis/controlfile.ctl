@@ -9,7 +9,7 @@
          clock = 2    
        RootAge = <.20  
 
-         model = 7  
+         model = 4  
          alpha = 1    
          ncatG = 4    
 
