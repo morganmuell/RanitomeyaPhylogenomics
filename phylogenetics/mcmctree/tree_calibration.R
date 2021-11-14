@@ -1,5 +1,5 @@
 #set working directory
-setwd("~/RanitomeyaPhylogenomics/mcmctree-analyses")
+setwd("~/RanitomeyaPhylogenomics/mcmctree")
 
 #load the library
 library(MCMCtreeR)
