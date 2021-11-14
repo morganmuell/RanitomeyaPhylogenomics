@@ -1,0 +1,27 @@
+*not a script*
+
+### PRIOR TO ANALYSIS ###
+Use sequence file (same as used for iqtree analyses) and output treefile from iqtree analyses to set a calibration node
+
+Used provided R script to set uniform calibration node at appropriate age (see manuscript)
+
+### STEP 1 ###
+Run control file with usedata argument set to 0
+
+### STEP 2 ###
+Run control file with usedata argument set to 3 (easiest to just do this with a text editor, otherwise you need to make 3 different control files in advance with this adjustment)
+
+Change name of "out.BV" file to "in.BV"
+
+### STEP 3 ###
+Run control file with usedata argument set to "usedata=2 in.BV"
+
+### STEP 4 ###
+Repeat step 3.
+
+### STEP 5 ###
+Assess convergence:
+
+1) Input mcmc.txt files into Tracer to check ESS values at each node are over 200.
+
+2) Check to see if average estimates at each node match between two runs.
