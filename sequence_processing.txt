@@ -81,9 +81,6 @@ phyluce_assembly_match_contigs_to_probes \
 # Extracting UCE locus data #
 #############################
 
-
-#########################################HEY MORGAN MODIFY THE TAXON SET
-
 ls 4_uce-search-results > taxa.txt
 
 mkdir -p 5_taxon-sets/all
@@ -143,8 +140,6 @@ phyluce_align_get_trimal_trimmed_alignments_from_untrimmed \
 # Locus Filtering #
 ###################
 
-##########################HEY MORGAN YOU DID EXTRA STUFF HERE
-
 #Filter for matrix completeness
 
 phyluce_align_get_only_loci_with_min_taxa \
@@ -164,7 +159,7 @@ phyluce_align_remove_locus_name_from_nexus_lines \
 rm -r muscle-nexus-70p
 
 
-# Filter for parsimony-informative sites (top 75%)
+# Filter for parsimony-informative sites (top 75% most informative)
 #run phyloch script (included here)
 
 #output file will be called inform_names_PIS_MORGANFILLIN.txt

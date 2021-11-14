@@ -5,7 +5,7 @@
 java -jar ~/Documents/Astral/astral.5.6.1.jar \
         -i gene_trees.newick \
         -o astral_sptree.treefile \
-        -a 19u-sp_map.txt
+        -a sp_map.txt
 
 # -i gene trees file, generated in iqtree step
 # -o specifies output
