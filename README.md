@@ -7,6 +7,6 @@ Muell MR, Chávez G, Prates I, Guillory WX, Kahn T, Twomey EM, Rodrigues MT, and
 
 Cleaned reads for all sequences are available at http://www.ncbi.nlm.nih.gov/bioproject/779027
 
-Detailed tutorials on the basics of sequence processing available at WILSON REPO.
+Detailed tutorials on the basics of sequence processing available at https://github.com/wxguillo/brownlab-workflow.
 
-A basic MCMCtree tutorial is available at ME REPO.
+A basic MCMCtree tutorial is available at https://github.com/morganmuell/brownlab-workflow-mcmctree.
